@@ -7,33 +7,35 @@ public class Movement : MonoBehaviour
     public float speed;
 
     public Animator animator;
+    // Get input from player
+    // apply movement to Player Sprite
 
-    // get input from player
-    //apply movement to sprite
     private void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
         Vector3 direction = new Vector3(horizontal, vertical);
+        AnimateMovement(direction);
 
         transform.position += direction * speed * Time.deltaTime;
-
     }
-    void ANIMATEmOVEMENT(Vector3 direction)
+
+    void AnimateMovement(Vector3 direction)
     {
         if (animator != null)
         {
             if (direction.magnitude > 0)
             {
-                animator.SetBool("isMoving", true);
-                animator.SetFloat("horizontal", direction.x);
-                animator.SetFloat("vertical", direction.y);
+                animator.SetBool("IsMoving", true);
+                animator.SetFloat("Horizontal", direction.x);
+                animator.SetFloat("Vertical", direction.y);
             }
             else
             {
-                animator.SetBool("isMoving", false);
+                animator.SetBool("IsMoving", false);
             }
         }
     }
+
 }
