@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        Vector3 direction = new Vector3(horizontal, vertical);
+        Vector3 direction = new Vector3(horizontal, vertical).normalized;
         AnimateMovement(direction);
 
         transform.position += direction * speed * Time.deltaTime;
